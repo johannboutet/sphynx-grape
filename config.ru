@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
-require File.expand_path('app/api', File.dirname(__FILE__))
+require 'sphynx'
+require 'grape'
+
+require './app/initializer'
+require './app/api'
+require './app/user'
+
+SphynxGrape::Initializer.configure
 
 run SphynxGrape::Api
