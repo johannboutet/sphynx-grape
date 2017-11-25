@@ -4,10 +4,24 @@ module SphynxGrape
   class Api < Grape::API
     format :json
 
-    use Sphynx::Middlewares::GrapeMiddleware
+    use Sphynx::Middleware::GrapeMiddleware
 
-    get do
+    include Sphynx::Grape::SecuredEndpoint
+
+    helpers Sphynx::Grape::SecurityHelper
+
+    get allow_anonymous: true do
       body false
+    end
+
+    namespace :protected do
+      get do
+        {
+          id: current_user.id,
+          first_name: current_user.first_name,
+          last_name: current_user.last_name
+        }
+      end
     end
   end
 end

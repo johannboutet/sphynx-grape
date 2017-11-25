@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'sphynx'
 require 'grape'
+require 'sphynx'
 
 require './app/initializer'
 require './app/api'

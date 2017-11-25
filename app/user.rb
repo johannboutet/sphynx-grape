@@ -11,5 +11,9 @@ module SphynxGrape
     def self.find_for_jwt_authentication(_sub)
       new
     end
+
+    def jwt_subject
+      id
+    end
   end
 end
