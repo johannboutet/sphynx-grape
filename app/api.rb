@@ -4,11 +4,11 @@ module SphynxGrape
   class Api < Grape::API
     format :json
 
-    use Sphynx::Middleware::GrapeMiddleware
+    use Sphynx::Middleware
 
-    include Sphynx::Grape::SecuredEndpoint
+    include Sphynx::GrapeHelper::SecuredEndpoint
 
-    helpers Sphynx::Grape::SecurityHelper
+    helpers Sphynx::GrapeHelper::SecurityMethods
 
     get allow_anonymous: true do
       body false
