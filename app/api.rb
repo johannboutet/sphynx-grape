@@ -6,15 +6,15 @@ module SphynxGrape
 
     use Sphynx::Middleware
 
-    include Sphynx::GrapeHelper::SecuredEndpoint
-
-    helpers Sphynx::GrapeHelper::SecurityMethods
+    helpers Sphynx::GrapeHelper
 
     get allow_anonymous: true do
       body false
     end
 
     namespace :protected do
+      before { authenticate_user! }
+
       get do
         {
           id: current_user.id,
